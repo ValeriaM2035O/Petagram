@@ -18,6 +18,6 @@ class FavoritasActivity : AppCompatActivity() {
 
         val rv = findViewById<RecyclerView>(R.id.rvFavoritas)
         rv.layoutManager = LinearLayoutManager(this)
-        rv.adapter = MascotaAdapter(DataSet.obtenerFavoritas())
+        rv.adapter = MascotaAdapter(BaseDatos(this).obtenerUltimas5())
     }
 }

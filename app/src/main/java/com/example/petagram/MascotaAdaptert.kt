@@ -30,9 +30,13 @@ class MascotaAdapter(private val mascotas: List<Mascota>) :
         holder.tvNombre.text = mascota.nombre
         holder.tvRating.text = mascota.rating.toString()
 
-        // Hueso blanco = dar like: suma 1 al rating (hueso amarillo)
         holder.btnLike.setOnClickListener {
             mascota.rating++
+            mascota.ultimoLike = System.currentTimeMillis()
+
+            // Persistencia: se guarda la entidad completa en la tabla mascota
+            BaseDatos(holder.itemView.context).guardarMascota(mascota)
+
             notifyItemChanged(holder.bindingAdapterPosition)
         }
     }

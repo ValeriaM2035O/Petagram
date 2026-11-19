@@ -33,6 +33,17 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    packaging {
+        resources {
+            excludes += setOf(
+                "META-INF/NOTICE.md",
+                "META-INF/LICENSE.md",
+                "META-INF/NOTICE",
+                "META-INF/LICENSE",
+                "META-INF/DEPENDENCIES"
+            )
+        }
+    }
 }
 
 dependencies {
@@ -44,6 +55,9 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
+    implementation("com.sun.mail:android-mail:1.6.7")
+    implementation("com.sun.mail:android-activation:1.6.7")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
